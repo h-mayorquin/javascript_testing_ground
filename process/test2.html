@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript</title>
+  <script src="processing.min.js"></script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    var canvas = document.getElementById("canvas");
+    var processing = new Processing(canvas, function(processing) {
+        processing.size(400, 400);
+        processing.background(0xFFF);
+
+        var mouseIsPressed = false;
+        processing.mousePressed = function () { mouseIsPressed = true; };
+        processing.mouseReleased = function () { mouseIsPressed = false; };
+
+        var keyIsPressed = false;
+        processing.keyPressed = function () { keyIsPressed = true; };
+        processing.keyReleased = function () { keyIsPressed = false; };
+
+        function getImage(s) {
+            var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+            processing.externals.sketch.imageCache.add(url);
+            return processing.loadImage(url);
+        }
+
+        with (processing) {
+
+    size(400, 400);
+    background(100);
+    stroke(255);
+    ellipse(50, 50, 25, 100);
+    println("hello web!");
+
+            // INSERT YOUR KHAN ACADEMY PROGRAM HERE
+
+
+        }
+        if (typeof draw !== 'undefined') processing.draw = draw;
+    });
+  </script>
+</body>
+</html>
